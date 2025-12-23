@@ -235,5 +235,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }, delay);
       });
     });
-  }, 2000);
+  }, 1000);
 });
