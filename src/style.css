@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=BBH+Bartle&family=Noto+Sans+Mono:wght@100..900&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'BBH Bartle', sans-serif;
+}
+
+body {
+  @apply bg-zinc-900 text-white;
+}
+
+html,
+body {
+  background-color: #18181b;
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center;
+  overscroll-behavior: none;
+}
+
+h1 {
+  font-size: clamp(2rem, 3.8vw, 7rem);
+}
+
+.pinstripe {
+  font-family: 'Noto Sans Mono', sans-serif;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: clamp(1.2rem, 10vw, 7rem);
+  }
+}
+
+.hero {
+  background-image: radial-gradient(
+      closest-corner circle at top,
+      rgba(0, 0, 0, 0.75),
+      transparent
+    ),
+    linear-gradient(to top, oklch(0.3486 0.141 25.723 / 50%), transparent);
+}
+
+.video-text {
+  background-image: linear-gradient(
+    to bottom,
+    oklch(0.3486 0.141 25.723 / 50%),
+    transparent
+  );
+}
+
+.videos-carousel {
+  background-color: oklch(0.3486 0.141 25.723 / 50%);
+  padding: 1rem 0;
+  overflow: clip;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.carousel-row {
+  width: 100%;
+  padding: 20px 0;
+}
+
+.carousel-row .carousel-track {
+  margin: -20px 0;
+  padding: 20px 0;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  animation: scroll-left 40s linear infinite;
+}
+
+.carousel-row-1 .carousel-track {
+  animation-duration: 35s;
+}
+
+.carousel-row-2 .carousel-track {
+  animation-duration: 35s;
+  animation-direction: reverse;
+}
+
+.carousel-item {
+  flex-shrink: 0;
+  width: 180px;
+  aspect-ratio: 9/16;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause animation on hover for better UX */
+.carousel-row:hover .carousel-track {
+  animation-play-state: paused;
+}
+
+@media (max-width: 768px) {
+  .carousel-item {
+    width: 120px;
+  }
+
+  .videos-carousel {
+    gap: 0.5rem;
+    padding: 1rem 0;
+  }
+
+  .carousel-track {
+    gap: 0.5rem;
+  }
+}
+
+.slot-container {
+  display: inline-block;
+  overflow: hidden;
+  height: 1.2em;
+  position: relative;
+  vertical-align: bottom;
+}
+
+.slot-reel {
+  display: flex;
+  flex-direction: column;
+  will-change: transform, filter;
+}
+
+.slot-reel.spinning {
+  filter: url(#motion-blur);
+}
+
+.slot-item {
+  display: block;
+  height: 1.2em;
+  line-height: 1.2;
+}
+
+/* Contact Form */
+.contact-section {
+  background-image: linear-gradient(
+    to bottom,
+    transparent,
+    oklch(0.2 0.05 25.723 / 30%)
+  );
+}
+
+.form-input {
+  @apply bg-zinc-800/80 border border-zinc-700 px-4 py-3 text-white rounded-sm;
+  font-family: 'Noto Sans Mono', sans-serif;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus {
+  @apply outline-none border-red-500/60;
+  box-shadow: 0 0 0 2px oklch(0.3486 0.141 25.723 / 30%);
+}
+
+.form-input::placeholder {
+  @apply text-zinc-500;
+}
+
+.submit-btn {
+  @apply bg-red-700 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-sm;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-1px);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Secret Footer */
+.secret-footer {
+  padding: 3rem 1rem 1.5rem;
+  text-align: center;
+  background-color: oklch(0.2 0.05 25.723 / 30%);
+}
+
+.secret-footer a {
+  color: rgba(255, 255, 255, 0.08);
+  font-size: 0.7rem;
+  text-decoration: none;
+  letter-spacing: 0.2em;
+  transition: color 0.4s ease;
+}
+
+.secret-footer a:hover {
+  color: rgba(255, 255, 255, 1);
+}
